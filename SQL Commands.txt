@@ -1,0 +1,24 @@
+CREATE TABLE member (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    details TEXT,
+    title VARCHAR(100),
+    level ENUM('Bronze','Silver','Gold') NOT NULL
+);
+
+CREATE TABLE event (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    capacity INT NOT NULL,
+    level ENUM('Bronze','Silver','Gold') NOT NULL,
+    date DATE NOT NULL UNIQUE
+);
+
+CREATE TABLE registration (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    event_id INT,
+    member_id INT,
+    FOREIGN KEY (event_id) REFERENCES event(id) ON DELETE CASCADE,
+    FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE,
+    UNIQUE(event_id, member_id)
+);
