@@ -1,17 +1,17 @@
 CREATE TABLE member (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    name CHAR(100),
     details TEXT,
-    title VARCHAR(100),
-    level ENUM('Bronze','Silver','Gold') NOT NULL
+    title CHAR(100),
+    level ENUM('Bronze','Silver','Gold')
 );
 
 CREATE TABLE event (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    capacity INT NOT NULL,
-    level ENUM('Bronze','Silver','Gold') NOT NULL,
-    date DATE NOT NULL UNIQUE
+    name CHAR(100),
+    capacity INT,
+    level ENUM('Bronze','Silver','Gold'),
+    date DATE UNIQUE
 );
 
 CREATE TABLE registration (
