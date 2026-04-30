@@ -1,0 +1,34 @@
+<h2>Registrations</h2>
+
+<form method="POST" action="/registrations">
+
+    Member:
+    <select name="memberId">
+        <% members.forEach(m => { %>
+            <option value="<%= m.id %>"><%= m.name %></option>
+        <% }) %>
+    </select>
+
+    Event:
+    <select name="eventId">
+        <% events.forEach(e => { %>
+            <option value="<%= e.id %>"><%= e.name %></option>
+        <% }) %>
+    </select>
+
+    <button>Register</button>
+</form>
+
+<ul>
+<% registrations.forEach(r => { %>
+    <li>
+        <%= r.member %> → <%= r.event %>
+        <form method="POST" action="/registrations/delete">
+            <input type="hidden" name="id" value="<%= r.id %>">
+            <button>Delete</button>
+        </form>
+    </li>
+<% }) %>
+</ul>
+
+<a href="/">Back</a>

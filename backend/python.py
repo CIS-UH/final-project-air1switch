@@ -183,17 +183,21 @@ def createRegistration():
     cursor = db.cursor(dictionary=True)
     memberId = data["memberId"]
     eventId = data["eventId"]
+
     # member level
     cursor.execute("SELECT level FROM member WHERE id=%s", (memberId,))
     member = cursor.fetchone()
+
     # event level and capacity
     cursor.execute("SELECT level, capacity FROM event WHERE id=%s", (eventId,))
     event = cursor.fetchone()
     if not member or not event:
         return jsonify({"error": "member/event not found"}), 404
+    
     # level check
     if levelMap[member["level"]] < levelMap[event["level"]]:
-        return jsonify({"error": "member level too low"}), 400      #check if it breaks like earlier before commit
+        return jsonify({"error": "member level too low"}), 400
+    
     # capacity check
     cursor.execute(
         "SELECT COUNT(*) AS total FROM registration WHERE event_id=%s",
@@ -212,7 +216,7 @@ def createRegistration():
         db.commit()
     except mysql.connector.Error:
         return jsonify({"error": "Member already registered"}), 400
-    return jsonify({"message": "Registration scomplete"})
+    return jsonify({"message": "Registration complete"})
 
 
 # getting all registrations with their details

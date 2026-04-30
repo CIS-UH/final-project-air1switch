@@ -1,0 +1,30 @@
+<h2>Members</h2>
+
+<form method="POST" action="/members">
+    Name: <input name="name"><br>
+    Details: <input name="details"><br>
+    Title: <input name="title"><br>
+
+    Level:
+    <select name="level">
+        <option>Bronze</option>
+        <option>Silver</option>
+        <option>Gold</option>
+    </select>
+
+    <button type="submit">Add Member</button>
+</form>
+
+<ul>
+<% members.forEach(m => { %>
+    <li>
+        <%= m.name %> (<%= m.level %>)
+        <form method="POST" action="/members/delete">
+            <input type="hidden" name="id" value="<%= m.id %>">
+            <button>Delete</button>
+        </form>
+    </li>
+<% }) %>
+</ul>
+
+<a href="/">Back</a>

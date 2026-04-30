@@ -1,0 +1,31 @@
+<h2>Events</h2>
+
+<form method="POST" action="/events">
+    Name: <input name="name"><br>
+    Capacity: <input name="capacity"><br>
+
+    Level:
+    <select name="level">
+        <option>Bronze</option>
+        <option>Silver</option>
+        <option>Gold</option>
+    </select>
+
+    Date: <input type="date" name="date"><br>
+
+    <button>Add Event</button>
+</form>
+
+<ul>
+<% events.forEach(e => { %>
+    <li>
+        <%= e.name %> (<%= e.level %>)
+        <form method="POST" action="/events/delete">
+            <input type="hidden" name="id" value="<%= e.id %>">
+            <button>Delete</button>
+        </form>
+    </li>
+<% }) %>
+</ul>
+
+<a href="/">Back</a>
