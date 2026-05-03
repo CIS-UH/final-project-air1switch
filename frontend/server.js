@@ -5,6 +5,7 @@ const app = express();
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set("views", __dirname + "/views/pages");
 
 const API = "http://127.0.0.1:5000";
 
@@ -31,6 +32,16 @@ app.post("/members/delete", async (req, res) => {
     res.redirect("/members");
 });
 
+app.get("/events/:id", async (req, res) => {
+    const eventId = req.params.id;
+    const registrations = await axios.get(`${API}/registrations`);
+    const filtered = registrations.data.filter(r => r.eventId == eventId);
+
+    res.render("eventDetails", {
+        eventId: eventId,
+        registrations: filtered
+    });
+});
 
 // event page
 app.get("/events", async (req, res) => {

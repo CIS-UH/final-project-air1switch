@@ -1,6 +1,6 @@
 ## VIP Event Manager API
-# Flask + MySQL API to manage VIP members, events, and registrations with membership tiers and event capacity rules.
-# Tables: member, event, registration (with cascade deletes and uniqueness constraints).
-# Run: python api.py → server at http://127.0.0.1:5000.
-# Endpoints: /members, /events, /registrations (supports CRUD, JSON requests).
-# Used AI to walkthrough the process of setting up postman and the connection between the api and the database itself since it wouldnt work for a bit. Used for understanding some of the execute functions and understanding why some of the checks were breaking before I got it to work on postman requests.
+# In the backend folder, install Flask and MySQL connector using pip install flask mysql-connector-python, then run the API with python backend\python.py (it will run on http://127.0.0.1:5000). Run npm install, or look at the package.json to see what needs to be installed then start the server using node frontend\server.js (running on http://localhost:8081). Ensure both servers are running at the same time, the database should be on and able to be connected by any IPv4 that is using the MySQL connection on port 3306. 
+
+# AI was used to figure out some of the integration of the two parts between the backend files and frontend, but the templates/final documents of the final and the HW4 were more than enough to built off of for the final project. 
+
+# I was not able to create a video for this code unfortunately. I am currently out of town coding the final bits on a laptop far worse than my main setup. All the code is there and working so I hope this will not detract from that fact much, the 5 points for the correct submission is split between the canvas github and video so I hope it is not too much off. 

@@ -1,19 +1,25 @@
 <h2>Members</h2>
 
 <form method="POST" action="/members">
-    Name: <input name="name"><br>
-    Details: <input name="details"><br>
-    Title: <input name="title"><br>
+    <label>Name:</label><br>
+    <input name="name"><br><br>
 
-    Level:
+    <label>Details:</label><br>
+    <input name="details"><br><br>
+
+    <label>Title:</label><br>
+    <input name="title"><br><br>
+
+    <label>Level:</label><br>
     <select name="level">
         <option>Bronze</option>
         <option>Silver</option>
         <option>Gold</option>
-    </select>
+    </select><br><br>
 
     <button type="submit">Add Member</button>
 </form>
+
 
 <ul>
 <% members.forEach(m => { %>

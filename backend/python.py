@@ -226,6 +226,7 @@ def getRegistrations():
     cursor = db.cursor(dictionary=True) 
     query = """
     SELECT registration.id,
+           registration.event_id,
            member.name AS member,
            event.name AS event
     FROM registration
